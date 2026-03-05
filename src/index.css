@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.track-scrollbar {
+  scrollbar-width: thin;
+}
+
+.wave-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.wave-bar {
+  width: 3px;
+  height: var(--wave-height, 20px);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  transform-origin: center;
+  animation: wave-pulse var(--wave-speed, 1s) ease-in-out infinite;
+  animation-delay: var(--wave-delay);
+}
+
+@keyframes wave-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-bar {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+}
