@@ -1,5 +1,6 @@
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import FilterBar from "./components/FilterBar";
+import NavigationOverlay from "./components/NavigationOverlay";
 import TrackRow from "./components/TrackRow";
 import { tracks } from "./data/tracks";
 
@@ -159,8 +160,11 @@ const PLAYBACK_PROFILES = [
   }
 ];
 
-function buildPattern(trackId, scaleName) {
-  const seed = trackId.split("").reduce((total, char) => total + char.charCodeAt(0), 0);
+const VERSION_PITCH_OFFSETS = [1, 1.05946, 0.94387, 1.0293];
+
+function buildPattern(trackId, scaleName, versionIndex = 0) {
+  const baseSeed = trackId.split("").reduce((total, char) => total + char.charCodeAt(0), 0);
+  const seed = baseSeed + versionIndex * 17;
   const scale = NOTE_SCALES[scaleName] ?? NOTE_SCALES.bright;
 
   return Array.from({ length: 12 }, (_, index) => {
@@ -186,11 +190,17 @@ function makeDistortionCurve(amount) {
 
 function App() {
   const [query, setQuery] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [playingTrackId, setPlayingTrackId] = useState(null);
+  const [playingVersionIndex, setPlayingVersionIndex] = useState(0);
   const audioContextRef = useRef(null);
   const playbackIntervalRef = useRef(null);
   const activeNodesRef = useRef(null);
   const stepRef = useRef(0);
+  const trackCatalog = tracks;
+  const [versionIndexes, setVersionIndexes] = useState(() =>
+    Object.fromEntries(tracks.map((track) => [track.id, 0]))
+  );
   const trackProfiles = useMemo(
     () =>
       Object.fromEntries(
@@ -198,11 +208,15 @@ function App() {
       ),
     []
   );
+  const versionCountByTrack = useMemo(
+    () => Object.fromEntries(trackCatalog.map((track) => [track.id, track.versions.length])),
+    [trackCatalog]
+  );
 
   const filteredTracks = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
 
-    return tracks.filter((track) => {
+    return trackCatalog.filter((track) => {
       const matchesQuery =
         normalizedQuery.length === 0 ||
         track.title.toLowerCase().includes(normalizedQuery) ||
@@ -210,7 +224,7 @@ function App() {
 
       return matchesQuery;
     });
-  }, [query]);
+  }, [query, trackCatalog]);
   const dividerIndex = useMemo(() => {
     const firstNonJpIndex = filteredTracks.findIndex((track) => track.creator !== "JP");
     if (firstNonJpIndex <= 0) {
@@ -222,6 +236,23 @@ function App() {
       .some((track) => track.creator === "JP");
     return hasJpBefore ? firstNonJpIndex : -1;
   }, [filteredTracks]);
+
+  const handleVersionSwipe = useCallback(
+    (trackId, direction) => {
+      setVersionIndexes((previousState) => {
+        const versionCount = versionCountByTrack[trackId] ?? 1;
+        const currentIndex = previousState[trackId] ?? 0;
+        const delta = direction === "next" ? 1 : -1;
+        const nextIndex = (currentIndex + delta + versionCount) % versionCount;
+
+        return {
+          ...previousState,
+          [trackId]: nextIndex
+        };
+      });
+    },
+    [versionCountByTrack]
+  );
 
   const tearDownEffectChain = useCallback(() => {
     const activeNodes = activeNodesRef.current;
@@ -342,6 +373,7 @@ function App() {
 
     tearDownEffectChain();
     setPlayingTrackId(null);
+    setPlayingVersionIndex(0);
     stepRef.current = 0;
   }, [tearDownEffectChain]);
 
@@ -381,7 +413,9 @@ function App() {
 
   const handleTrackSelect = useCallback(
     async (track) => {
-      if (playingTrackId === track.id) {
+      const selectedVersionIndex = track.versionIndex ?? 0;
+
+      if (playingTrackId === track.id && playingVersionIndex === selectedVersionIndex) {
         stopPlayback();
         return;
       }
@@ -400,20 +434,30 @@ function App() {
 
       const profile = trackProfiles[track.id] ?? PLAYBACK_PROFILES[0];
       buildEffectChain(context, profile);
-      const pattern = buildPattern(track.id, profile.scale);
+      const pattern = buildPattern(track.id, profile.scale, selectedVersionIndex);
+      const versionPitchOffset =
+        VERSION_PITCH_OFFSETS[selectedVersionIndex % VERSION_PITCH_OFFSETS.length] ?? 1;
 
       stepRef.current = 0;
       setPlayingTrackId(track.id);
-      playStep(context, pattern[0], profile);
+      setPlayingVersionIndex(selectedVersionIndex);
+      playStep(context, pattern[0] * versionPitchOffset, profile);
       stepRef.current = 1;
 
       playbackIntervalRef.current = window.setInterval(() => {
         const nextFrequency = pattern[stepRef.current % pattern.length];
-        playStep(context, nextFrequency, profile);
+        playStep(context, nextFrequency * versionPitchOffset, profile);
         stepRef.current += 1;
       }, profile.tempoMs);
     },
-    [buildEffectChain, playStep, playingTrackId, stopPlayback, trackProfiles]
+    [
+      buildEffectChain,
+      playStep,
+      playingTrackId,
+      playingVersionIndex,
+      stopPlayback,
+      trackProfiles
+    ]
   );
 
   useEffect(() => {
@@ -439,43 +483,74 @@ function App() {
     }
   }, [filteredTracks, playingTrackId, stopPlayback]);
 
-  return (
-    <main className="flex min-h-dvh items-center justify-center bg-gradient-to-br from-[#f7fbff] via-[#f4f6ff] to-[#eef6ff] sm:p-6">
-      <section className="h-dvh w-full max-h-[844px] max-w-[390px] overflow-hidden bg-base-100 sm:rounded-2xl sm:border sm:border-[#d9e6f7] sm:shadow-xl">
-        <div className="flex h-full flex-col">
-          <FilterBar query={query} onQueryChange={setQuery} />
+  useEffect(() => {
+    if (!playingTrackId) {
+      return;
+    }
 
-          <div className="track-scrollbar flex-1 overflow-y-auto px-2 py-2">
-            {filteredTracks.length > 0 ? (
-              <ul className="space-y-1">
-                {filteredTracks.map((track, index) => (
-                  <Fragment key={track.id}>
-                    {index === dividerIndex ? (
-                      <li aria-hidden="true" className="px-2 py-1.5">
-                        <div className="h-px w-full bg-base-300" />
-                      </li>
-                    ) : null}
-                    <TrackRow
-                      track={track}
-                      isPlaying={playingTrackId === track.id}
-                      profile={trackProfiles[track.id]}
-                      onSelect={handleTrackSelect}
-                    />
-                  </Fragment>
-                ))}
-              </ul>
-            ) : (
-              <div className="flex h-full items-center justify-center px-8 text-center">
-                <div>
-                  <p className="text-base font-semibold text-base-content/80">No tracks found</p>
-                  <p className="mt-1 text-sm text-base-content/60">
-                    Try a different track or artist search term.
-                  </p>
-                </div>
+    const activeVersionForPlayingTrack = versionIndexes[playingTrackId] ?? 0;
+    if (activeVersionForPlayingTrack !== playingVersionIndex) {
+      stopPlayback();
+    }
+  }, [playingTrackId, playingVersionIndex, stopPlayback, versionIndexes]);
+
+  return (
+    <main className="mx-auto flex h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-base-100 text-[#1d1f24]">
+      <section className="relative flex h-full flex-col">
+        <FilterBar query={query} onQueryChange={setQuery} onMenuClick={() => setIsMenuOpen(true)} />
+
+        <div className="track-scrollbar flex-1 overflow-y-auto px-2 py-2">
+          {filteredTracks.length > 0 ? (
+            <ul className="space-y-1">
+              {filteredTracks.map((track, index) => (
+                <Fragment key={track.id}>
+                  {index === dividerIndex ? (
+                    <li aria-hidden="true" className="px-2 py-1.5">
+                      <div className="h-px w-full bg-base-300" />
+                    </li>
+                  ) : null}
+                  {(() => {
+                    const versionCount = track.versions.length;
+                    const currentVersionIndex = versionIndexes[track.id] ?? 0;
+                    const safeVersionIndex =
+                      ((currentVersionIndex % versionCount) + versionCount) % versionCount;
+                    const activeVersion = track.versions[safeVersionIndex];
+                    const displayTrack = {
+                      ...track,
+                      title: activeVersion.title,
+                      artist: activeVersion.artist,
+                      creator: activeVersion.creator,
+                      creatorAvatar: activeVersion.creatorAvatar,
+                      asteriskColor: activeVersion.asteriskColor,
+                      versionIndex: safeVersionIndex
+                    };
+
+                    return (
+                      <TrackRow
+                        track={displayTrack}
+                        isPlaying={playingTrackId === track.id}
+                        profile={trackProfiles[track.id]}
+                        onSelect={handleTrackSelect}
+                        onVersionSwipe={handleVersionSwipe}
+                      />
+                    );
+                  })()}
+                </Fragment>
+              ))}
+            </ul>
+          ) : (
+            <div className="flex h-full items-center justify-center px-8 text-center">
+              <div>
+                <p className="text-base font-semibold text-base-content/80">No tracks found</p>
+                <p className="mt-1 text-sm text-base-content/60">
+                  Try a different track or artist search term.
+                </p>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
+
+        <NavigationOverlay open={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </section>
     </main>
   );

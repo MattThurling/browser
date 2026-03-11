@@ -1,29 +1,121 @@
+import { useRef } from "react";
+
 function buildWaveDelays(count) {
   return Array.from({ length: count }, (_, index) => `${(index * 0.08).toFixed(2)}s`);
 }
 
 const WAVE_SAMPLE_COUNT = 6;
+const SWIPE_TRIGGER_PX = 54;
 
-function TrackRow({ track, isPlaying, onSelect, profile }) {
+function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, profile }) {
+  const pointerIdRef = useRef(null);
+  const startPointRef = useRef({ x: 0, y: 0 });
+  const deltaXRef = useRef(0);
+  const isHorizontalSwipeRef = useRef(false);
+  const suppressClickRef = useRef(false);
+
+  const waveDelays = buildWaveDelays(WAVE_SAMPLE_COUNT);
+
+  const resetSwipeState = () => {
+    pointerIdRef.current = null;
+    deltaXRef.current = 0;
+    isHorizontalSwipeRef.current = false;
+  };
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       onSelect(track);
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      onVersionSwipe(track.id, "next");
+      return;
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      onVersionSwipe(track.id, "previous");
     }
   };
 
-  const waveDelays = buildWaveDelays(WAVE_SAMPLE_COUNT);
+  const handlePointerDown = (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+
+    pointerIdRef.current = event.pointerId;
+    startPointRef.current = { x: event.clientX, y: event.clientY };
+    deltaXRef.current = 0;
+    isHorizontalSwipeRef.current = false;
+  };
+
+  const handlePointerMove = (event) => {
+    if (pointerIdRef.current !== event.pointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - startPointRef.current.x;
+    const deltaY = event.clientY - startPointRef.current.y;
+    deltaXRef.current = deltaX;
+
+    if (!isHorizontalSwipeRef.current) {
+      if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) {
+        return;
+      }
+
+      if (Math.abs(deltaX) <= Math.abs(deltaY)) {
+        resetSwipeState();
+        return;
+      }
+
+      isHorizontalSwipeRef.current = true;
+      suppressClickRef.current = true;
+    }
+  };
+
+  const handlePointerEnd = () => {
+    if (!isHorizontalSwipeRef.current) {
+      resetSwipeState();
+      return;
+    }
+
+    if (Math.abs(deltaXRef.current) < SWIPE_TRIGGER_PX) {
+      resetSwipeState();
+      return;
+    }
+
+    const direction = deltaXRef.current < 0 ? "next" : "previous";
+    onVersionSwipe(track.id, direction);
+    resetSwipeState();
+  };
+
+  const handleRowClick = () => {
+    if (suppressClickRef.current) {
+      suppressClickRef.current = false;
+      return;
+    }
+
+    onSelect(track);
+  };
 
   return (
     <li
       role="button"
       tabIndex={0}
       aria-pressed={isPlaying}
-      onClick={() => onSelect(track)}
+      onClick={handleRowClick}
       onKeyDown={handleKeyDown}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerEnd}
+      onPointerCancel={resetSwipeState}
       className={`group grid cursor-pointer grid-cols-[56px_1fr_36px_24px] items-center gap-3 rounded-2xl px-2 py-2 transition-colors ${
         isPlaying ? "bg-base-200/90" : "hover:bg-base-200/80"
       }`}
+      style={{ touchAction: "pan-y" }}
     >
       <div className="relative h-14 w-14 overflow-hidden rounded-xl">
         <img
@@ -59,7 +151,9 @@ function TrackRow({ track, isPlaying, onSelect, profile }) {
           <p className="truncate text-sm font-semibold text-base-content">{track.title}</p>
           <span
             aria-hidden="true"
-            className={`text-base leading-none ${track.creator === "JP" ? "text-blue-500" : "text-black"}`}
+            className={`text-base leading-none ${
+              track.asteriskColor === "blue" ? "text-blue-500" : "text-black"
+            }`}
           >
             *
           </span>
@@ -80,6 +174,7 @@ function TrackRow({ track, isPlaying, onSelect, profile }) {
         className="btn btn-ghost btn-xs btn-square text-lg leading-none text-base-content/60"
         aria-label={`Open menu for ${track.title}`}
         onClick={(event) => event.stopPropagation()}
+        onPointerDown={(event) => event.stopPropagation()}
       >
         ⋮
       </button>
