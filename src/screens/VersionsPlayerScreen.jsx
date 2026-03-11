@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, Ellipsis, Lock, Pause, Play } from "lucide-react";
 import NavigationOverlay from "../components/NavigationOverlay";
 import { tracks } from "../data/tracks";
+import { navigate } from "../lib/navigation";
 
 const TICK_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];
 const WAVE_DELAYS = ["0s", "0.1s", "0.2s", "0.3s", "0.4s", "0.5s"];
@@ -114,10 +115,14 @@ function VersionsPlayerScreen() {
     <main className="mx-auto flex h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-white text-[#1d1f24]">
       <header className="px-5 pb-2 pt-4">
         <div className="flex items-center justify-between text-sm">
-          <a href="/" className="flex items-center gap-1 text-[#2f3339]">
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="flex items-center gap-1 text-[#2f3339]"
+          >
             <ChevronLeft className="h-4 w-4" />
             Back
-          </a>
+          </button>
 
           <button
             type="button"

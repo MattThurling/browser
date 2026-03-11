@@ -8,10 +8,11 @@ import {
   UserCircle2,
   X
 } from "lucide-react";
+import { navigate } from "../lib/navigation";
 
 const MENU_ITEMS = [
   { id: "account", label: "David Eserin", icon: UserCircle2 },
-  { id: "home", label: "Home", icon: House },
+  { id: "home", label: "Home", icon: House, href: "/player" },
   { id: "browse", label: "Browse", icon: Compass, href: "/" },
   { id: "dashboard", label: "Dashboard", icon: LayoutGrid },
   { id: "settings", label: "Settings", icon: Settings },
@@ -19,6 +20,11 @@ const MENU_ITEMS = [
 ];
 
 function NavigationOverlay({ open, onClose }) {
+  const handleNavigate = (href) => {
+    onClose();
+    navigate(href);
+  };
+
   if (!open) {
     return null;
   }
@@ -44,14 +50,14 @@ function NavigationOverlay({ open, onClose }) {
           return (
             <li key={item.id}>
               {item.href ? (
-                <a
-                  href={item.href}
-                  onClick={onClose}
+                <button
+                  type="button"
+                  onClick={() => handleNavigate(item.href)}
                   className="flex items-center gap-4 text-[16px] font-medium text-[#22262d]"
                 >
                   <Icon className="h-5 w-5 text-[#8c8c8c]" />
                   {item.label}
-                </a>
+                </button>
               ) : (
                 <button
                   type="button"
