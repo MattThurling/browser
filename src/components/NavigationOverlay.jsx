@@ -14,7 +14,7 @@ const MENU_ITEMS = [
   { id: "account", label: "David Eserin", icon: UserCircle2 },
   { id: "home", label: "Home", icon: House, href: "/player" },
   { id: "browse", label: "Browse", icon: Compass, href: "/" },
-  { id: "dashboard", label: "Dashboard", icon: LayoutGrid },
+  { id: "dashboard", label: "Dashboard", icon: LayoutGrid, href: "/search-v1" },
   { id: "settings", label: "Settings", icon: Settings },
   { id: "signout", label: "Sign out", icon: LogOut }
 ];
