@@ -1,7 +1,7 @@
 export const tracks = [
   {
     id: "trk_1",
-    title: "Neon Skyline",
+    title: "Soft Edges Hard Floors",
     artist: "Lena Vale",
     creator: "JP",
     genre: "Synth Pop",
@@ -13,7 +13,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Neon Skyline - JP rerub",
+        title: "Soft Edges Hard Floors - JP rerub",
         artist: "Lena Vale",
         creator: "JP",
         creatorAvatar:
@@ -21,7 +21,7 @@ export const tracks = [
         asteriskColor: "blue"
       },
       {
-        title: "Neon Skyline",
+        title: "Soft Edges Hard Floors",
         artist: "Lena Vale",
         creator: "Alex M.",
         creatorAvatar:
@@ -29,7 +29,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Neon Skyline - Unplugged",
+        title: "Soft Edges Hard Floors - Unplugged",
         artist: "Lena Vale",
         creator: "Rico T.",
         creatorAvatar:
@@ -37,7 +37,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Neon Skyline - Night Remix",
+        title: "Soft Edges Hard Floors - Night Remix",
         artist: "Lena Vale",
         creator: "Sam N.",
         creatorAvatar:
@@ -48,7 +48,7 @@ export const tracks = [
   },
   {
     id: "trk_2",
-    title: "Pulse in the Rain",
+    title: "Things I Don't Say",
     artist: "Midnight Harbor",
     creator: "JP",
     genre: "Electronic",
@@ -60,7 +60,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Pulse in the Rain - Analogz",
+        title: "Things I Don't Say - Analogz",
         artist: "Midnight Harbor",
         creator: "JP",
         creatorAvatar:
@@ -68,7 +68,7 @@ export const tracks = [
         asteriskColor: "blue"
       },
       {
-        title: "Pulse in the Rain",
+        title: "Things I Don't Say",
         artist: "Midnight Harbor",
         creator: "Alex M.",
         creatorAvatar:
@@ -76,7 +76,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Pulse in the Rain - Unplugged",
+        title: "Things I Don't Say - Unplugged",
         artist: "Midnight Harbor",
         creator: "Rico T.",
         creatorAvatar:
@@ -84,7 +84,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Pulse in the Rain - Night Remix",
+        title: "Things I Don't Say - Night Remix",
         artist: "Midnight Harbor",
         creator: "Sam N.",
         creatorAvatar:
@@ -95,7 +95,7 @@ export const tracks = [
   },
   {
     id: "trk_3",
-    title: "Downtown Echo",
+    title: "Never Been a Cheater",
     artist: "Arlo K",
     creator: "JP",
     genre: "Indie",
@@ -107,7 +107,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Downtown Echo - Sweaty Box",
+        title: "Never Been a Cheater - Sweaty Box",
         artist: "Arlo K",
         creator: "JP",
         creatorAvatar:
@@ -115,7 +115,7 @@ export const tracks = [
         asteriskColor: "blue"
       },
       {
-        title: "Downtown Echo",
+        title: "Never Been a Cheater",
         artist: "Arlo K",
         creator: "Alex M.",
         creatorAvatar:
@@ -123,7 +123,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Downtown Echo - Unplugged",
+        title: "Never Been a Cheater - Unplugged",
         artist: "Arlo K",
         creator: "Rico T.",
         creatorAvatar:
@@ -131,7 +131,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Downtown Echo - Night Remix",
+        title: "Never Been a Cheater - Night Remix",
         artist: "Arlo K",
         creator: "Sam N.",
         creatorAvatar:
@@ -142,7 +142,7 @@ export const tracks = [
   },
   {
     id: "trk_4",
-    title: "Aurora Drive",
+    title: "Whisper",
     artist: "Sia Nova",
     creator: "JP",
     genre: "House",
@@ -154,7 +154,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Aurora Drive - Directors Cut",
+        title: "Whisper - Directors Cut",
         artist: "Sia Nova",
         creator: "JP",
         creatorAvatar:
@@ -162,7 +162,7 @@ export const tracks = [
         asteriskColor: "blue"
       },
       {
-        title: "Aurora Drive",
+        title: "Whisper",
         artist: "Sia Nova",
         creator: "Alex M.",
         creatorAvatar:
@@ -170,7 +170,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Aurora Drive - Unplugged",
+        title: "Whisper - Unplugged",
         artist: "Sia Nova",
         creator: "Rico T.",
         creatorAvatar:
@@ -178,7 +178,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Aurora Drive - Night Remix",
+        title: "Whisper - Night Remix",
         artist: "Sia Nova",
         creator: "Sam N.",
         creatorAvatar:
@@ -189,7 +189,7 @@ export const tracks = [
   },
   {
     id: "trk_5",
-    title: "Afterglow Lines",
+    title: "Tes Doigts Sur Ma Peau",
     artist: "Cass Atlas",
     creator: "Ivy M.",
     genre: "Chill",
@@ -201,7 +201,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Afterglow Lines",
+        title: "Tes Doigts Sur Ma Peau",
         artist: "Cass Atlas",
         creator: "Ivy M.",
         creatorAvatar:
@@ -209,7 +209,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Afterglow Lines - Unplugged",
+        title: "Tes Doigts Sur Ma Peau - Unplugged",
         artist: "Cass Atlas",
         creator: "Ivy M.",
         creatorAvatar:
@@ -217,7 +217,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Afterglow Lines - Skyline Remix",
+        title: "Tes Doigts Sur Ma Peau - Skyline Remix",
         artist: "Cass Atlas",
         creator: "Ivy M.",
         creatorAvatar:
@@ -225,7 +225,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Afterglow Lines - Tape Session",
+        title: "Tes Doigts Sur Ma Peau - Tape Session",
         artist: "Cass Atlas",
         creator: "Ivy M.",
         creatorAvatar:
@@ -236,7 +236,7 @@ export const tracks = [
   },
   {
     id: "trk_6",
-    title: "Riverlight",
+    title: "Smells Like Money",
     artist: "The Bloomers",
     creator: "Luca P.",
     genre: "Acoustic",
@@ -248,7 +248,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Riverlight",
+        title: "Smells Like Money",
         artist: "The Bloomers",
         creator: "Luca P.",
         creatorAvatar:
@@ -256,7 +256,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Riverlight - Loft Session",
+        title: "Smells Like Money - Loft Session",
         artist: "The Bloomers",
         creator: "Luca P.",
         creatorAvatar:
@@ -264,7 +264,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Riverlight - Night Remix",
+        title: "Smells Like Money - Night Remix",
         artist: "The Bloomers",
         creator: "Luca P.",
         creatorAvatar:
@@ -272,7 +272,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Riverlight - Acoustic Pass",
+        title: "Smells Like Money - Acoustic Pass",
         artist: "The Bloomers",
         creator: "Luca P.",
         creatorAvatar:
@@ -283,7 +283,7 @@ export const tracks = [
   },
   {
     id: "trk_7",
-    title: "City Waves",
+    title: "Nuit Electrique",
     artist: "Echo Lake",
     creator: "Ari C.",
     genre: "Electronic",
@@ -295,7 +295,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "City Waves",
+        title: "Nuit Electrique",
         artist: "Echo Lake",
         creator: "Ari C.",
         creatorAvatar:
@@ -303,7 +303,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "City Waves - Unplugged",
+        title: "Nuit Electrique - Unplugged",
         artist: "Echo Lake",
         creator: "Ari C.",
         creatorAvatar:
@@ -311,7 +311,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "City Waves - Rooftop Remix",
+        title: "Nuit Electrique - Rooftop Remix",
         artist: "Echo Lake",
         creator: "Ari C.",
         creatorAvatar:
@@ -319,7 +319,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "City Waves - Radio Edit",
+        title: "Nuit Electrique - Radio Edit",
         artist: "Echo Lake",
         creator: "Ari C.",
         creatorAvatar:
@@ -330,7 +330,7 @@ export const tracks = [
   },
   {
     id: "trk_8",
-    title: "Paper Planets",
+    title: "MoFire",
     artist: "Nora Isles",
     creator: "Seth V.",
     genre: "Indie",
@@ -341,7 +341,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Paper Planets",
+        title: "MoFire",
         artist: "Nora Isles",
         creator: "Seth V.",
         creatorAvatar:
@@ -349,7 +349,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Paper Planets - Studio Dub",
+        title: "MoFire - Studio Dub",
         artist: "Nora Isles",
         creator: "Seth V.",
         creatorAvatar:
@@ -357,7 +357,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Paper Planets - Moonlight Remix",
+        title: "MoFire - Moonlight Remix",
         artist: "Nora Isles",
         creator: "Seth V.",
         creatorAvatar:
@@ -365,7 +365,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Paper Planets - Acoustic Tape",
+        title: "MoFire - Acoustic Tape",
         artist: "Nora Isles",
         creator: "Seth V.",
         creatorAvatar:
@@ -376,7 +376,7 @@ export const tracks = [
   },
   {
     id: "trk_9",
-    title: "Frictionless",
+    title: "Electric Moves",
     artist: "Orbit 84",
     creator: "Nia K.",
     genre: "Synth Pop",
@@ -388,7 +388,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Frictionless",
+        title: "Electric Moves",
         artist: "Orbit 84",
         creator: "Nia K.",
         creatorAvatar:
@@ -396,7 +396,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Frictionless - Unplugged",
+        title: "Electric Moves - Unplugged",
         artist: "Orbit 84",
         creator: "Nia K.",
         creatorAvatar:
@@ -404,7 +404,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Frictionless - Night Shift Remix",
+        title: "Electric Moves - Night Shift Remix",
         artist: "Orbit 84",
         creator: "Nia K.",
         creatorAvatar:
@@ -412,7 +412,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Frictionless - Radio Edit",
+        title: "Electric Moves - Radio Edit",
         artist: "Orbit 84",
         creator: "Nia K.",
         creatorAvatar:
@@ -423,7 +423,7 @@ export const tracks = [
   },
   {
     id: "trk_10",
-    title: "Golden Circuit",
+    title: "Phoenix Rising",
     artist: "Rhea & Co.",
     creator: "Tom G.",
     genre: "House",
@@ -435,7 +435,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Golden Circuit",
+        title: "Phoenix Rising",
         artist: "Rhea & Co.",
         creator: "Tom G.",
         creatorAvatar:
@@ -443,7 +443,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Golden Circuit - Club Remix",
+        title: "Phoenix Rising - Club Remix",
         artist: "Rhea & Co.",
         creator: "Tom G.",
         creatorAvatar:
@@ -451,7 +451,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Golden Circuit - Afterhours",
+        title: "Phoenix Rising - Afterhours",
         artist: "Rhea & Co.",
         creator: "Tom G.",
         creatorAvatar:
@@ -459,7 +459,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Golden Circuit - Unplugged",
+        title: "Phoenix Rising - Unplugged",
         artist: "Rhea & Co.",
         creator: "Tom G.",
         creatorAvatar:
@@ -470,7 +470,7 @@ export const tracks = [
   },
   {
     id: "trk_11",
-    title: "Evening Maps",
+    title: "Do Your Worse",
     artist: "Oriel",
     creator: "Yasmin D.",
     genre: "Chill",
@@ -482,7 +482,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Evening Maps",
+        title: "Do Your Worse",
         artist: "Oriel",
         creator: "Yasmin D.",
         creatorAvatar:
@@ -490,7 +490,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Evening Maps - Unplugged",
+        title: "Do Your Worse - Unplugged",
         artist: "Oriel",
         creator: "Yasmin D.",
         creatorAvatar:
@@ -498,7 +498,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Evening Maps - Morning Remix",
+        title: "Do Your Worse - Morning Remix",
         artist: "Oriel",
         creator: "Yasmin D.",
         creatorAvatar:
@@ -506,7 +506,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Evening Maps - Radio Edit",
+        title: "Do Your Worse - Radio Edit",
         artist: "Oriel",
         creator: "Yasmin D.",
         creatorAvatar:
@@ -517,7 +517,7 @@ export const tracks = [
   },
   {
     id: "trk_12",
-    title: "Open Window",
+    title: "Out Of The Shadows",
     artist: "Twelve Pines",
     creator: "Jules B.",
     genre: "Acoustic",
@@ -529,7 +529,7 @@ export const tracks = [
       "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
     versions: [
       {
-        title: "Open Window",
+        title: "Out Of The Shadows",
         artist: "Twelve Pines",
         creator: "Jules B.",
         creatorAvatar:
@@ -537,7 +537,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Open Window - Campfire Edit",
+        title: "Out Of The Shadows - Campfire Edit",
         artist: "Twelve Pines",
         creator: "Jules B.",
         creatorAvatar:
@@ -545,7 +545,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Open Window - Night Remix",
+        title: "Out Of The Shadows - Night Remix",
         artist: "Twelve Pines",
         creator: "Jules B.",
         creatorAvatar:
@@ -553,7 +553,7 @@ export const tracks = [
         asteriskColor: "black"
       },
       {
-        title: "Open Window - Radio Edit",
+        title: "Out Of The Shadows - Radio Edit",
         artist: "Twelve Pines",
         creator: "Jules B.",
         creatorAvatar:
