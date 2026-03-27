@@ -1,6 +1,7 @@
-import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import FilterBar from "./components/FilterBar";
 import NavigationOverlay from "./components/NavigationOverlay";
+import TrackOptionsOverlay from "./components/TrackOptionsOverlay";
 import TrackRow from "./components/TrackRow";
 import { tracks, versioners } from "./data/tracks";
 import {
@@ -16,6 +17,7 @@ import {
 function App() {
   const [query, setQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuTrack, setMenuTrack] = useState(null);
   const [playingTrackId, setPlayingTrackId] = useState(null);
   const [playingVersionIndex, setPlayingVersionIndex] = useState(0);
   const audioContextRef = useRef(null);
@@ -95,18 +97,6 @@ function App() {
     return versioners.filter((versioner) => versionerIds.has(versioner.id));
   }, [playingTrackId, trackCatalog]);
   const visibleVersioners = playingTrackVersioners ?? filteredVersioners;
-  const dividerIndex = useMemo(() => {
-    const firstNonJpIndex = filteredTracks.findIndex((track) => track.creator !== "JP");
-    if (firstNonJpIndex <= 0) {
-      return -1;
-    }
-
-    const hasJpBefore = filteredTracks
-      .slice(0, firstNonJpIndex)
-      .some((track) => track.creator === "JP");
-    return hasJpBefore ? firstNonJpIndex : -1;
-  }, [filteredTracks]);
-
   const handleVersionSwipe = useCallback(
     (trackId, direction) => {
       setVersionIndexes((previousState) => {
@@ -123,6 +113,13 @@ function App() {
     },
     [versionCountByTrack]
   );
+  const handleTrackMenuOpen = useCallback((track) => {
+    setIsMenuOpen(false);
+    setMenuTrack(track);
+  }, []);
+  const handleTrackMenuClose = useCallback(() => {
+    setMenuTrack(null);
+  }, []);
 
   const tearDownEffectChain = useCallback(() => {
     disposeEffectChain(activeNodesRef.current);
@@ -245,20 +242,18 @@ function App() {
         <FilterBar
           query={query}
           onQueryChange={setQuery}
-          onMenuClick={() => setIsMenuOpen(true)}
+          onMenuClick={() => {
+            setMenuTrack(null);
+            setIsMenuOpen(true);
+          }}
           versioners={visibleVersioners}
         />
 
         <div className="track-scrollbar flex-1 overflow-y-auto px-2 py-2">
           {filteredTracks.length > 0 ? (
             <ul className="space-y-1">
-              {filteredTracks.map((track, index) => (
-                <Fragment key={track.id}>
-                  {index === dividerIndex ? (
-                    <li aria-hidden="true" className="px-2 py-1.5">
-                      <div className="h-px w-full bg-base-300" />
-                    </li>
-                  ) : null}
+              {filteredTracks.map((track) => (
+                <li key={track.id}>
                   {(() => {
                     const versionCount = track.versions.length;
                     const currentVersionIndex = versionIndexes[track.id] ?? 0;
@@ -267,11 +262,11 @@ function App() {
                     const activeVersion = track.versions[safeVersionIndex];
                     const displayTrack = {
                       ...track,
-                      title: activeVersion.title,
+                      mixTitle: activeVersion.title,
+                      title: track.title,
                       artist: activeVersion.artist,
                       creator: activeVersion.creator,
                       creatorAvatar: activeVersion.creatorAvatar,
-                      asteriskColor: activeVersion.asteriskColor,
                       versionIndex: safeVersionIndex
                     };
 
@@ -282,10 +277,11 @@ function App() {
                         profile={trackProfiles[track.id]}
                         onSelect={handleTrackSelect}
                         onVersionSwipe={handleVersionSwipe}
+                        onOpenMenu={handleTrackMenuOpen}
                       />
                     );
                   })()}
-                </Fragment>
+                </li>
               ))}
             </ul>
           ) : (
@@ -301,6 +297,11 @@ function App() {
         </div>
 
         <NavigationOverlay open={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <TrackOptionsOverlay
+          open={Boolean(menuTrack)}
+          track={menuTrack}
+          onClose={handleTrackMenuClose}
+        />
       </section>
     </main>
   );

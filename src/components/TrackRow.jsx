@@ -7,7 +7,7 @@ function buildWaveDelays(count) {
 const WAVE_SAMPLE_COUNT = 6;
 const SWIPE_TRIGGER_PX = 54;
 
-function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, profile }) {
+function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, profile }) {
   const pointerIdRef = useRef(null);
   const startPointRef = useRef({ x: 0, y: 0 });
   const deltaXRef = useRef(0);
@@ -158,14 +158,14 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, profile }) {
       <div className="min-w-0">
         <div className="flex min-w-0 items-center gap-1">
           <p className="truncate text-sm font-semibold text-base-content">{track.title}</p>
-          <span
-            aria-hidden="true"
-            className={`text-base leading-none ${
-              track.asteriskColor === "blue" ? "text-blue-500" : "text-black"
-            }`}
-          >
+          <span aria-hidden="true" className="text-base leading-none text-black">
             *
           </span>
+          {track.mixTitle ? (
+            <span className="truncate text-sm font-semibold text-base-content/80">
+              {track.mixTitle}
+            </span>
+          ) : null}
         </div>
         <div className="mt-0.5">
           <p className="truncate text-xs text-base-content/70">{track.artist}</p>
@@ -176,7 +176,10 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, profile }) {
         type="button"
         className="btn btn-ghost btn-xs btn-square text-lg leading-none text-base-content/60"
         aria-label={`Open menu for ${track.title}`}
-        onClick={(event) => event.stopPropagation()}
+        onClick={(event) => {
+          event.stopPropagation();
+          onOpenMenu(track);
+        }}
         onPointerDown={(event) => event.stopPropagation()}
       >
         ⋮

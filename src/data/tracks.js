@@ -84,30 +84,25 @@ const trackDefinitions = [
     artist: "Lena Vale",
     genre: "Synth Pop",
     duration: "3:32",
-    favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=240&q=80",
     creatorId: "jp",
     versions: [
       {
-        title: "Soft Edges Hard Floors - JP rerub",
-        asteriskColor: "blue",
-        creatorId: "jp"
+        creatorId: "jp",
+        title: "JP rerub"
       },
       {
-        title: "Soft Edges Hard Floors",
-        asteriskColor: "black",
-        creatorId: "alex-m"
+        creatorId: "alex-m",
+        title: null
       },
       {
-        title: "Soft Edges Hard Floors - Unplugged",
-        asteriskColor: "black",
-        creatorId: "rico-t"
+        creatorId: "rico-t",
+        title: "Unplugged"
       },
       {
-        title: "Soft Edges Hard Floors - Night Remix",
-        asteriskColor: "black",
-        creatorId: "sam-n"
+        creatorId: "sam-n",
+        title: "Night Remix"
       }
     ]
   },
@@ -117,30 +112,25 @@ const trackDefinitions = [
     artist: "Midnight Harbor",
     genre: "Electronic",
     duration: "4:04",
-    favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=240&q=80",
     creatorId: "jp",
     versions: [
       {
-        title: "Things I Don't Say - Analogz",
-        asteriskColor: "blue",
-        creatorId: "jp"
+        creatorId: "jp",
+        title: "Analogz"
       },
       {
-        title: "Things I Don't Say",
-        asteriskColor: "black",
-        creatorId: "alex-m"
+        creatorId: "alex-m",
+        title: null
       },
       {
-        title: "Things I Don't Say - Unplugged",
-        asteriskColor: "black",
-        creatorId: "rico-t"
+        creatorId: "rico-t",
+        title: "Unplugged"
       },
       {
-        title: "Things I Don't Say - Night Remix",
-        asteriskColor: "black",
-        creatorId: "sam-n"
+        creatorId: "sam-n",
+        title: "Night Remix"
       }
     ]
   },
@@ -150,30 +140,25 @@ const trackDefinitions = [
     artist: "Arlo K",
     genre: "Indie",
     duration: "2:58",
-    favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?auto=format&fit=crop&w=240&q=80",
     creatorId: "jp",
     versions: [
       {
-        title: "Never Been a Cheater - Sweaty Box",
-        asteriskColor: "blue",
-        creatorId: "jp"
+        creatorId: "jp",
+        title: "Sweaty Box"
       },
       {
-        title: "Never Been a Cheater",
-        asteriskColor: "black",
-        creatorId: "alex-m"
+        creatorId: "alex-m",
+        title: null
       },
       {
-        title: "Never Been a Cheater - Unplugged",
-        asteriskColor: "black",
-        creatorId: "rico-t"
+        creatorId: "rico-t",
+        title: "Unplugged"
       },
       {
-        title: "Never Been a Cheater - Night Remix",
-        asteriskColor: "black",
-        creatorId: "sam-n"
+        creatorId: "sam-n",
+        title: "Night Remix"
       }
     ]
   },
@@ -183,30 +168,25 @@ const trackDefinitions = [
     artist: "Sia Nova",
     genre: "House",
     duration: "3:47",
-    favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=240&q=80",
     creatorId: "jp",
     versions: [
       {
-        title: "Whisper - Directors Cut",
-        asteriskColor: "blue",
-        creatorId: "jp"
+        creatorId: "jp",
+        title: "Directors Cut"
       },
       {
-        title: "Whisper",
-        asteriskColor: "black",
-        creatorId: "alex-m"
+        creatorId: "alex-m",
+        title: null
       },
       {
-        title: "Whisper - Unplugged",
-        asteriskColor: "black",
-        creatorId: "rico-t"
+        creatorId: "rico-t",
+        title: "Unplugged"
       },
       {
-        title: "Whisper - Night Remix",
-        asteriskColor: "black",
-        creatorId: "sam-n"
+        creatorId: "sam-n",
+        title: "Night Remix"
       }
     ]
   },
@@ -216,30 +196,25 @@ const trackDefinitions = [
     artist: "Cass Atlas",
     genre: "Chill",
     duration: "3:11",
-    favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=240&q=80",
     creatorId: "ivy-m",
     versions: [
       {
-        title: "Tes Doigts Sur Ma Peau",
-        asteriskColor: "black",
-        creatorId: "ivy-m"
+        creatorId: "ivy-m",
+        title: null
       },
       {
-        title: "Tes Doigts Sur Ma Peau - Unplugged",
-        asteriskColor: "black",
-        creatorId: "luca-p"
+        creatorId: "luca-p",
+        title: "Unplugged"
       },
       {
-        title: "Tes Doigts Sur Ma Peau - Skyline Remix",
-        asteriskColor: "black",
-        creatorId: "ari-c"
+        creatorId: "ari-c",
+        title: "Skyline Remix"
       },
       {
-        title: "Tes Doigts Sur Ma Peau - Tape Session",
-        asteriskColor: "black",
-        creatorId: "seth-v"
+        creatorId: "seth-v",
+        title: "Tape Session"
       }
     ]
   },
@@ -249,30 +224,25 @@ const trackDefinitions = [
     artist: "The Bloomers",
     genre: "Acoustic",
     duration: "4:19",
-    favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=240&q=80",
     creatorId: "luca-p",
     versions: [
       {
-        title: "Smells Like Money",
-        asteriskColor: "black",
-        creatorId: "luca-p"
+        creatorId: "luca-p",
+        title: null
       },
       {
-        title: "Smells Like Money - Loft Session",
-        asteriskColor: "black",
-        creatorId: "ari-c"
+        creatorId: "ari-c",
+        title: "Loft Session"
       },
       {
-        title: "Smells Like Money - Night Remix",
-        asteriskColor: "black",
-        creatorId: "seth-v"
+        creatorId: "seth-v",
+        title: "Night Remix"
       },
       {
-        title: "Smells Like Money - Acoustic Pass",
-        asteriskColor: "black",
-        creatorId: "nia-k"
+        creatorId: "nia-k",
+        title: "Acoustic Pass"
       }
     ]
   },
@@ -282,30 +252,25 @@ const trackDefinitions = [
     artist: "Echo Lake",
     genre: "Electronic",
     duration: "3:40",
-    favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=240&q=80",
     creatorId: "ari-c",
     versions: [
       {
-        title: "Nuit Electrique",
-        asteriskColor: "black",
-        creatorId: "ari-c"
+        creatorId: "ari-c",
+        title: null
       },
       {
-        title: "Nuit Electrique - Unplugged",
-        asteriskColor: "black",
-        creatorId: "seth-v"
+        creatorId: "seth-v",
+        title: "Unplugged"
       },
       {
-        title: "Nuit Electrique - Rooftop Remix",
-        asteriskColor: "black",
-        creatorId: "nia-k"
+        creatorId: "nia-k",
+        title: "Rooftop Remix"
       },
       {
-        title: "Nuit Electrique - Radio Edit",
-        asteriskColor: "black",
-        creatorId: "tom-g"
+        creatorId: "tom-g",
+        title: "Radio Edit"
       }
     ]
   },
@@ -315,29 +280,24 @@ const trackDefinitions = [
     artist: "Nora Isles",
     genre: "Indie",
     duration: "2:49",
-    favorite: false,
     thumbnail: "https://picsum.photos/id/1039/240/240",
     creatorId: "seth-v",
     versions: [
       {
-        title: "MoFire",
-        asteriskColor: "black",
-        creatorId: "seth-v"
+        creatorId: "seth-v",
+        title: null
       },
       {
-        title: "MoFire - Studio Dub",
-        asteriskColor: "black",
-        creatorId: "nia-k"
+        creatorId: "nia-k",
+        title: "Studio Dub"
       },
       {
-        title: "MoFire - Moonlight Remix",
-        asteriskColor: "black",
-        creatorId: "tom-g"
+        creatorId: "tom-g",
+        title: "Moonlight Remix"
       },
       {
-        title: "MoFire - Acoustic Tape",
-        asteriskColor: "black",
-        creatorId: "yasmin-d"
+        creatorId: "yasmin-d",
+        title: "Acoustic Tape"
       }
     ]
   },
@@ -347,30 +307,25 @@ const trackDefinitions = [
     artist: "Orbit 84",
     genre: "Synth Pop",
     duration: "3:06",
-    favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=240&q=80",
     creatorId: "nia-k",
     versions: [
       {
-        title: "Electric Moves",
-        asteriskColor: "black",
-        creatorId: "nia-k"
+        creatorId: "nia-k",
+        title: null
       },
       {
-        title: "Electric Moves - Unplugged",
-        asteriskColor: "black",
-        creatorId: "tom-g"
+        creatorId: "tom-g",
+        title: "Unplugged"
       },
       {
-        title: "Electric Moves - Night Shift Remix",
-        asteriskColor: "black",
-        creatorId: "yasmin-d"
+        creatorId: "yasmin-d",
+        title: "Night Shift Remix"
       },
       {
-        title: "Electric Moves - Radio Edit",
-        asteriskColor: "black",
-        creatorId: "jules-b"
+        creatorId: "jules-b",
+        title: "Radio Edit"
       }
     ]
   },
@@ -380,30 +335,25 @@ const trackDefinitions = [
     artist: "Rhea & Co.",
     genre: "House",
     duration: "4:25",
-    favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1425342605259-25d80e320565?auto=format&fit=crop&w=240&q=80",
     creatorId: "tom-g",
     versions: [
       {
-        title: "Phoenix Rising",
-        asteriskColor: "black",
-        creatorId: "tom-g"
+        creatorId: "tom-g",
+        title: null
       },
       {
-        title: "Phoenix Rising - Club Remix",
-        asteriskColor: "black",
-        creatorId: "yasmin-d"
+        creatorId: "yasmin-d",
+        title: "Club Remix"
       },
       {
-        title: "Phoenix Rising - Afterhours",
-        asteriskColor: "black",
-        creatorId: "jules-b"
+        creatorId: "jules-b",
+        title: "Afterhours"
       },
       {
-        title: "Phoenix Rising - Unplugged",
-        asteriskColor: "black",
-        creatorId: "jp"
+        creatorId: "jp",
+        title: "Unplugged"
       }
     ]
   },
@@ -413,30 +363,25 @@ const trackDefinitions = [
     artist: "Oriel",
     genre: "Chill",
     duration: "3:14",
-    favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1444824775686-4185f172c44b?auto=format&fit=crop&w=240&q=80",
     creatorId: "yasmin-d",
     versions: [
       {
-        title: "Do Your Worse",
-        asteriskColor: "black",
-        creatorId: "yasmin-d"
+        creatorId: "yasmin-d",
+        title: null
       },
       {
-        title: "Do Your Worse - Unplugged",
-        asteriskColor: "black",
-        creatorId: "jules-b"
+        creatorId: "jules-b",
+        title: "Unplugged"
       },
       {
-        title: "Do Your Worse - Morning Remix",
-        asteriskColor: "black",
-        creatorId: "jp"
+        creatorId: "jp",
+        title: "Morning Remix"
       },
       {
-        title: "Do Your Worse - Radio Edit",
-        asteriskColor: "black",
-        creatorId: "alex-m"
+        creatorId: "alex-m",
+        title: "Radio Edit"
       }
     ]
   },
@@ -446,30 +391,25 @@ const trackDefinitions = [
     artist: "Twelve Pines",
     genre: "Acoustic",
     duration: "3:57",
-    favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=240&q=80",
     creatorId: "jules-b",
     versions: [
       {
-        title: "Out Of The Shadows",
-        asteriskColor: "black",
-        creatorId: "jules-b"
+        creatorId: "jules-b",
+        title: null
       },
       {
-        title: "Out Of The Shadows - Campfire Edit",
-        asteriskColor: "black",
-        creatorId: "jp"
+        creatorId: "jp",
+        title: "Campfire Edit"
       },
       {
-        title: "Out Of The Shadows - Night Remix",
-        asteriskColor: "black",
-        creatorId: "alex-m"
+        creatorId: "alex-m",
+        title: "Night Remix"
       },
       {
-        title: "Out Of The Shadows - Radio Edit",
-        asteriskColor: "black",
-        creatorId: "rico-t"
+        creatorId: "rico-t",
+        title: "Radio Edit"
       }
     ]
   }
