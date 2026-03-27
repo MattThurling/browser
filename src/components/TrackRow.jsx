@@ -168,7 +168,9 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
           ) : null}
         </div>
         <div className="mt-0.5">
-          <p className="truncate text-xs text-base-content/70">{track.artist}</p>
+          <p className="truncate text-xs text-base-content/70">
+            {track.artist} {"\u2022"} {track.creator}
+          </p>
         </div>
       </div>
 
