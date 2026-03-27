@@ -22,13 +22,13 @@ function FilterBar({ query, onQueryChange, onMenuClick, versioners }) {
         </button>
       </div>
 
-      <label className="input input-bordered input-sm flex items-center gap-2 rounded-xl">
+      <label className="input input-bordered flex h-11 items-center gap-2 rounded-xl px-3 text-base">
         <Search className="h-4 w-4 text-base-content/50" aria-hidden="true" />
         <input
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
           placeholder="Search tracks, artists, or creators"
-          className="grow"
+          className="grow text-[16px]"
         />
       </label>
 
