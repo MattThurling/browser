@@ -112,7 +112,7 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerEnd}
       onPointerCancel={resetSwipeState}
-      className={`group grid cursor-pointer grid-cols-[42px_52px_1fr_24px] items-center gap-3 rounded-2xl px-2 py-2 transition-colors ${
+      className={`group grid cursor-pointer grid-cols-[42px_52px_1fr_44px] items-center gap-3 rounded-2xl px-2 py-2 transition-colors ${
         isPlaying ? "bg-base-200/90" : "hover:bg-base-200/80"
       }`}
       style={{ touchAction: "pan-y" }}
@@ -174,7 +174,7 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
 
       <button
         type="button"
-        className="btn btn-ghost btn-xs btn-square text-lg leading-none text-base-content/60"
+        className="btn btn-ghost btn-square h-11 min-h-0 w-11 justify-self-end rounded-xl text-lg leading-none text-base-content/60"
         aria-label={`Open menu for ${track.title}`}
         onClick={(event) => {
           event.stopPropagation();

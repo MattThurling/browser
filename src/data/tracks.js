@@ -18,10 +18,10 @@ export const versioners = [
     name: "Rico T."
   },
   {
-    id: "sam-n",
+    id: "dave",
     avatar:
       "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-    name: "Sam N."
+    name: "Dave"
   },
   {
     id: "ivy-m",
@@ -101,8 +101,24 @@ const trackDefinitions = [
         title: "Unplugged"
       },
       {
-        creatorId: "sam-n",
+        creatorId: "dave",
         title: "Night Remix"
+      },
+      {
+        creatorId: "ivy-m",
+        title: "Tape Echo Mix"
+      },
+      {
+        creatorId: "luca-p",
+        title: "Basement Dub"
+      },
+      {
+        creatorId: "ari-c",
+        title: "Sunrise Rework"
+      },
+      {
+        creatorId: "seth-v",
+        title: "Instrumental Cut"
       }
     ]
   },
@@ -123,14 +139,6 @@ const trackDefinitions = [
       {
         creatorId: "alex-m",
         title: null
-      },
-      {
-        creatorId: "rico-t",
-        title: "Unplugged"
-      },
-      {
-        creatorId: "sam-n",
-        title: "Night Remix"
       }
     ]
   },
@@ -157,8 +165,12 @@ const trackDefinitions = [
         title: "Unplugged"
       },
       {
-        creatorId: "sam-n",
+        creatorId: "dave",
         title: "Night Remix"
+      },
+      {
+        creatorId: "nia-k",
+        title: "Afterglow Pass"
       }
     ]
   },
@@ -174,19 +186,7 @@ const trackDefinitions = [
     versions: [
       {
         creatorId: "jp",
-        title: "Directors Cut"
-      },
-      {
-        creatorId: "alex-m",
         title: null
-      },
-      {
-        creatorId: "rico-t",
-        title: "Unplugged"
-      },
-      {
-        creatorId: "sam-n",
-        title: "Night Remix"
       }
     ]
   },
@@ -215,13 +215,21 @@ const trackDefinitions = [
       {
         creatorId: "seth-v",
         title: "Tape Session"
+      },
+      {
+        creatorId: "yasmin-d",
+        title: "Afterhours Edit"
+      },
+      {
+        creatorId: "jules-b",
+        title: "Late Train Mix"
       }
     ]
   },
   {
     id: "trk_6",
     title: "Smells Like Money",
-    artist: "The Bloomers",
+    artist: "Antonio",
     genre: "Acoustic",
     duration: "4:19",
     thumbnail:
@@ -233,12 +241,8 @@ const trackDefinitions = [
         title: null
       },
       {
-        creatorId: "ari-c",
-        title: "Loft Session"
-      },
-      {
-        creatorId: "seth-v",
-        title: "Night Remix"
+        creatorId: "dave",
+        title: "Stinks Like Crypto"
       },
       {
         creatorId: "nia-k",
@@ -249,7 +253,7 @@ const trackDefinitions = [
   {
     id: "trk_7",
     title: "Nuit Electrique",
-    artist: "Echo Lake",
+    artist: "Antonio",
     genre: "Electronic",
     duration: "3:40",
     thumbnail:
@@ -271,6 +275,18 @@ const trackDefinitions = [
       {
         creatorId: "tom-g",
         title: "Radio Edit"
+      },
+      {
+        creatorId: "yasmin-d",
+        title: "Neon Drift"
+      },
+      {
+        creatorId: "jules-b",
+        title: "Strings Mix"
+      },
+      {
+        creatorId: "jp",
+        title: "Midnight Cut"
       }
     ]
   },
@@ -318,14 +334,6 @@ const trackDefinitions = [
       {
         creatorId: "tom-g",
         title: "Unplugged"
-      },
-      {
-        creatorId: "yasmin-d",
-        title: "Night Shift Remix"
-      },
-      {
-        creatorId: "jules-b",
-        title: "Radio Edit"
       }
     ]
   },
@@ -354,6 +362,22 @@ const trackDefinitions = [
       {
         creatorId: "jp",
         title: "Unplugged"
+      },
+      {
+        creatorId: "alex-m",
+        title: "Extended Intro"
+      },
+      {
+        creatorId: "rico-t",
+        title: "Warehouse Mix"
+      },
+      {
+        creatorId: "dave",
+        title: "Piano Version"
+      },
+      {
+        creatorId: "ivy-m",
+        title: "Slow Burn Edit"
       }
     ]
   },
@@ -370,18 +394,6 @@ const trackDefinitions = [
       {
         creatorId: "yasmin-d",
         title: null
-      },
-      {
-        creatorId: "jules-b",
-        title: "Unplugged"
-      },
-      {
-        creatorId: "jp",
-        title: "Morning Remix"
-      },
-      {
-        creatorId: "alex-m",
-        title: "Radio Edit"
       }
     ]
   },
@@ -410,6 +422,10 @@ const trackDefinitions = [
       {
         creatorId: "rico-t",
         title: "Radio Edit"
+      },
+      {
+        creatorId: "dave",
+        title: "Demo Dub"
       }
     ]
   }
