@@ -112,16 +112,25 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, profile }) {
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerEnd}
       onPointerCancel={resetSwipeState}
-      className={`group grid cursor-pointer grid-cols-[56px_1fr_36px_24px] items-center gap-3 rounded-2xl px-2 py-2 transition-colors ${
+      className={`group grid cursor-pointer grid-cols-[42px_52px_1fr_24px] items-center gap-3 rounded-2xl px-2 py-2 transition-colors ${
         isPlaying ? "bg-base-200/90" : "hover:bg-base-200/80"
       }`}
       style={{ touchAction: "pan-y" }}
     >
-      <div className="relative h-14 w-14 overflow-hidden rounded-xl">
+      <div className="h-10 w-10 overflow-hidden rounded-full">
+        <img
+          src={track.creatorAvatar}
+          alt={`${track.creator} avatar`}
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+
+      <div className="relative h-[52px] w-[52px] overflow-hidden rounded-xl">
         <img
           src={track.thumbnail}
           alt={`${track.title} cover art`}
-          className="h-14 w-14 object-cover shadow-sm"
+          className="h-[52px] w-[52px] object-cover shadow-sm"
           loading="lazy"
         />
         {isPlaying ? (
@@ -160,12 +169,6 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, profile }) {
         </div>
         <div className="mt-0.5">
           <p className="truncate text-xs text-base-content/70">{track.artist}</p>
-        </div>
-      </div>
-
-      <div className="avatar justify-self-end">
-        <div className="w-9 rounded-full ring ring-base-200 ring-offset-1">
-          <img src={track.creatorAvatar} alt={`${track.creator} avatar`} loading="lazy" />
         </div>
       </div>
 

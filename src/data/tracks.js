@@ -1,48 +1,113 @@
-export const tracks = [
+export const versioners = [
+  {
+    id: "jp",
+    avatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
+    name: "JP"
+  },
+  {
+    id: "alex-m",
+    avatar:
+      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
+    name: "Alex M."
+  },
+  {
+    id: "rico-t",
+    avatar:
+      "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
+    name: "Rico T."
+  },
+  {
+    id: "sam-n",
+    avatar:
+      "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
+    name: "Sam N."
+  },
+  {
+    id: "ivy-m",
+    avatar:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
+    name: "Ivy M."
+  },
+  {
+    id: "luca-p",
+    avatar:
+      "https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=120&q=80",
+    name: "Luca P."
+  },
+  {
+    id: "ari-c",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
+    name: "Ari C."
+  },
+  {
+    id: "seth-v",
+    avatar:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80",
+    name: "Seth V."
+  },
+  {
+    id: "nia-k",
+    avatar:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80",
+    name: "Nia K."
+  },
+  {
+    id: "tom-g",
+    avatar:
+      "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=120&q=80",
+    name: "Tom G."
+  },
+  {
+    id: "yasmin-d",
+    avatar:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80",
+    name: "Yasmin D."
+  },
+  {
+    id: "jules-b",
+    avatar:
+      "https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=120&q=80",
+    name: "Jules B."
+  }
+];
+
+export const versionersById = Object.fromEntries(
+  versioners.map((versioner) => [versioner.id, versioner])
+);
+
+const trackDefinitions = [
   {
     id: "trk_1",
     title: "Soft Edges Hard Floors",
     artist: "Lena Vale",
-    creator: "JP",
     genre: "Synth Pop",
     duration: "3:32",
     favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
+    creatorId: "jp",
     versions: [
       {
         title: "Soft Edges Hard Floors - JP rerub",
-        artist: "Lena Vale",
-        creator: "JP",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "blue"
+        asteriskColor: "blue",
+        creatorId: "jp"
       },
       {
         title: "Soft Edges Hard Floors",
-        artist: "Lena Vale",
-        creator: "Alex M.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "alex-m"
       },
       {
         title: "Soft Edges Hard Floors - Unplugged",
-        artist: "Lena Vale",
-        creator: "Rico T.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "rico-t"
       },
       {
         title: "Soft Edges Hard Floors - Night Remix",
-        artist: "Lena Vale",
-        creator: "Sam N.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "sam-n"
       }
     ]
   },
@@ -50,46 +115,32 @@ export const tracks = [
     id: "trk_2",
     title: "Things I Don't Say",
     artist: "Midnight Harbor",
-    creator: "JP",
     genre: "Electronic",
     duration: "4:04",
     favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
+    creatorId: "jp",
     versions: [
       {
         title: "Things I Don't Say - Analogz",
-        artist: "Midnight Harbor",
-        creator: "JP",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "blue"
+        asteriskColor: "blue",
+        creatorId: "jp"
       },
       {
         title: "Things I Don't Say",
-        artist: "Midnight Harbor",
-        creator: "Alex M.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "alex-m"
       },
       {
         title: "Things I Don't Say - Unplugged",
-        artist: "Midnight Harbor",
-        creator: "Rico T.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "rico-t"
       },
       {
         title: "Things I Don't Say - Night Remix",
-        artist: "Midnight Harbor",
-        creator: "Sam N.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "sam-n"
       }
     ]
   },
@@ -97,46 +148,32 @@ export const tracks = [
     id: "trk_3",
     title: "Never Been a Cheater",
     artist: "Arlo K",
-    creator: "JP",
     genre: "Indie",
     duration: "2:58",
     favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
+    creatorId: "jp",
     versions: [
       {
         title: "Never Been a Cheater - Sweaty Box",
-        artist: "Arlo K",
-        creator: "JP",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "blue"
+        asteriskColor: "blue",
+        creatorId: "jp"
       },
       {
         title: "Never Been a Cheater",
-        artist: "Arlo K",
-        creator: "Alex M.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "alex-m"
       },
       {
         title: "Never Been a Cheater - Unplugged",
-        artist: "Arlo K",
-        creator: "Rico T.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "rico-t"
       },
       {
         title: "Never Been a Cheater - Night Remix",
-        artist: "Arlo K",
-        creator: "Sam N.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "sam-n"
       }
     ]
   },
@@ -144,46 +181,32 @@ export const tracks = [
     id: "trk_4",
     title: "Whisper",
     artist: "Sia Nova",
-    creator: "JP",
     genre: "House",
     duration: "3:47",
     favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
+    creatorId: "jp",
     versions: [
       {
         title: "Whisper - Directors Cut",
-        artist: "Sia Nova",
-        creator: "JP",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "blue"
+        asteriskColor: "blue",
+        creatorId: "jp"
       },
       {
         title: "Whisper",
-        artist: "Sia Nova",
-        creator: "Alex M.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "alex-m"
       },
       {
         title: "Whisper - Unplugged",
-        artist: "Sia Nova",
-        creator: "Rico T.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "rico-t"
       },
       {
         title: "Whisper - Night Remix",
-        artist: "Sia Nova",
-        creator: "Sam N.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "sam-n"
       }
     ]
   },
@@ -191,46 +214,32 @@ export const tracks = [
     id: "trk_5",
     title: "Tes Doigts Sur Ma Peau",
     artist: "Cass Atlas",
-    creator: "Ivy M.",
     genre: "Chill",
     duration: "3:11",
     favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
+    creatorId: "ivy-m",
     versions: [
       {
         title: "Tes Doigts Sur Ma Peau",
-        artist: "Cass Atlas",
-        creator: "Ivy M.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "ivy-m"
       },
       {
         title: "Tes Doigts Sur Ma Peau - Unplugged",
-        artist: "Cass Atlas",
-        creator: "Ivy M.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "luca-p"
       },
       {
         title: "Tes Doigts Sur Ma Peau - Skyline Remix",
-        artist: "Cass Atlas",
-        creator: "Ivy M.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "ari-c"
       },
       {
         title: "Tes Doigts Sur Ma Peau - Tape Session",
-        artist: "Cass Atlas",
-        creator: "Ivy M.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "seth-v"
       }
     ]
   },
@@ -238,46 +247,32 @@ export const tracks = [
     id: "trk_6",
     title: "Smells Like Money",
     artist: "The Bloomers",
-    creator: "Luca P.",
     genre: "Acoustic",
     duration: "4:19",
     favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
+    creatorId: "luca-p",
     versions: [
       {
         title: "Smells Like Money",
-        artist: "The Bloomers",
-        creator: "Luca P.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "luca-p"
       },
       {
         title: "Smells Like Money - Loft Session",
-        artist: "The Bloomers",
-        creator: "Luca P.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "ari-c"
       },
       {
         title: "Smells Like Money - Night Remix",
-        artist: "The Bloomers",
-        creator: "Luca P.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "seth-v"
       },
       {
         title: "Smells Like Money - Acoustic Pass",
-        artist: "The Bloomers",
-        creator: "Luca P.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "nia-k"
       }
     ]
   },
@@ -285,46 +280,32 @@ export const tracks = [
     id: "trk_7",
     title: "Nuit Electrique",
     artist: "Echo Lake",
-    creator: "Ari C.",
     genre: "Electronic",
     duration: "3:40",
     favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
+    creatorId: "ari-c",
     versions: [
       {
         title: "Nuit Electrique",
-        artist: "Echo Lake",
-        creator: "Ari C.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "ari-c"
       },
       {
         title: "Nuit Electrique - Unplugged",
-        artist: "Echo Lake",
-        creator: "Ari C.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "seth-v"
       },
       {
         title: "Nuit Electrique - Rooftop Remix",
-        artist: "Echo Lake",
-        creator: "Ari C.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "nia-k"
       },
       {
         title: "Nuit Electrique - Radio Edit",
-        artist: "Echo Lake",
-        creator: "Ari C.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "tom-g"
       }
     ]
   },
@@ -332,45 +313,31 @@ export const tracks = [
     id: "trk_8",
     title: "MoFire",
     artist: "Nora Isles",
-    creator: "Seth V.",
     genre: "Indie",
     duration: "2:49",
     favorite: false,
     thumbnail: "https://picsum.photos/id/1039/240/240",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
+    creatorId: "seth-v",
     versions: [
       {
         title: "MoFire",
-        artist: "Nora Isles",
-        creator: "Seth V.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "seth-v"
       },
       {
         title: "MoFire - Studio Dub",
-        artist: "Nora Isles",
-        creator: "Seth V.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "nia-k"
       },
       {
         title: "MoFire - Moonlight Remix",
-        artist: "Nora Isles",
-        creator: "Seth V.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "tom-g"
       },
       {
         title: "MoFire - Acoustic Tape",
-        artist: "Nora Isles",
-        creator: "Seth V.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "yasmin-d"
       }
     ]
   },
@@ -378,46 +345,32 @@ export const tracks = [
     id: "trk_9",
     title: "Electric Moves",
     artist: "Orbit 84",
-    creator: "Nia K.",
     genre: "Synth Pop",
     duration: "3:06",
     favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
+    creatorId: "nia-k",
     versions: [
       {
         title: "Electric Moves",
-        artist: "Orbit 84",
-        creator: "Nia K.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "nia-k"
       },
       {
         title: "Electric Moves - Unplugged",
-        artist: "Orbit 84",
-        creator: "Nia K.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "tom-g"
       },
       {
         title: "Electric Moves - Night Shift Remix",
-        artist: "Orbit 84",
-        creator: "Nia K.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "yasmin-d"
       },
       {
         title: "Electric Moves - Radio Edit",
-        artist: "Orbit 84",
-        creator: "Nia K.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "jules-b"
       }
     ]
   },
@@ -425,46 +378,32 @@ export const tracks = [
     id: "trk_10",
     title: "Phoenix Rising",
     artist: "Rhea & Co.",
-    creator: "Tom G.",
     genre: "House",
     duration: "4:25",
     favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1425342605259-25d80e320565?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
+    creatorId: "tom-g",
     versions: [
       {
         title: "Phoenix Rising",
-        artist: "Rhea & Co.",
-        creator: "Tom G.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "tom-g"
       },
       {
         title: "Phoenix Rising - Club Remix",
-        artist: "Rhea & Co.",
-        creator: "Tom G.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "yasmin-d"
       },
       {
         title: "Phoenix Rising - Afterhours",
-        artist: "Rhea & Co.",
-        creator: "Tom G.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "jules-b"
       },
       {
         title: "Phoenix Rising - Unplugged",
-        artist: "Rhea & Co.",
-        creator: "Tom G.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "jp"
       }
     ]
   },
@@ -472,46 +411,32 @@ export const tracks = [
     id: "trk_11",
     title: "Do Your Worse",
     artist: "Oriel",
-    creator: "Yasmin D.",
     genre: "Chill",
     duration: "3:14",
     favorite: false,
     thumbnail:
       "https://images.unsplash.com/photo-1444824775686-4185f172c44b?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
+    creatorId: "yasmin-d",
     versions: [
       {
         title: "Do Your Worse",
-        artist: "Oriel",
-        creator: "Yasmin D.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "yasmin-d"
       },
       {
         title: "Do Your Worse - Unplugged",
-        artist: "Oriel",
-        creator: "Yasmin D.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "jules-b"
       },
       {
         title: "Do Your Worse - Morning Remix",
-        artist: "Oriel",
-        creator: "Yasmin D.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "jp"
       },
       {
         title: "Do Your Worse - Radio Edit",
-        artist: "Oriel",
-        creator: "Yasmin D.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "alex-m"
       }
     ]
   },
@@ -519,47 +444,63 @@ export const tracks = [
     id: "trk_12",
     title: "Out Of The Shadows",
     artist: "Twelve Pines",
-    creator: "Jules B.",
     genre: "Acoustic",
     duration: "3:57",
     favorite: true,
     thumbnail:
       "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=240&q=80",
-    creatorAvatar:
-      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
+    creatorId: "jules-b",
     versions: [
       {
         title: "Out Of The Shadows",
-        artist: "Twelve Pines",
-        creator: "Jules B.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "jules-b"
       },
       {
         title: "Out Of The Shadows - Campfire Edit",
-        artist: "Twelve Pines",
-        creator: "Jules B.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "jp"
       },
       {
         title: "Out Of The Shadows - Night Remix",
-        artist: "Twelve Pines",
-        creator: "Jules B.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "alex-m"
       },
       {
         title: "Out Of The Shadows - Radio Edit",
-        artist: "Twelve Pines",
-        creator: "Jules B.",
-        creatorAvatar:
-          "https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=120&q=80",
-        asteriskColor: "black"
+        asteriskColor: "black",
+        creatorId: "rico-t"
       }
     ]
   }
 ];
+
+function getVersioner(versionerId) {
+  const versioner = versionersById[versionerId];
+
+  if (!versioner) {
+    throw new Error(`Unknown versioner: ${versionerId}`);
+  }
+
+  return versioner;
+}
+
+export const tracks = trackDefinitions.map((track) => {
+  const creator = getVersioner(track.creatorId);
+
+  return {
+    ...track,
+    creator: creator.name,
+    creatorAvatar: creator.avatar,
+    versions: track.versions.map((version) => {
+      const versioner = getVersioner(version.creatorId);
+
+      return {
+        ...version,
+        artist: version.artist ?? track.artist,
+        creator: versioner.name,
+        creatorAvatar: versioner.avatar
+      };
+    })
+  };
+});

@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import VersionsPlayerScreen from "./screens/VersionsPlayerScreen";
-import SearchLabScreen from "./screens/SearchLabScreen";
 import "./index.css";
 import { useEffect, useState } from "react";
 
@@ -31,10 +30,6 @@ function RootRouter() {
 
   if (pathname === "/player") {
     return <VersionsPlayerScreen />;
-  }
-
-  if (pathname === "/search-v1") {
-    return <SearchLabScreen />;
   }
 
   return <App />;

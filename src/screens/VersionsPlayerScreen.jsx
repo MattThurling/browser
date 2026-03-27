@@ -1,27 +1,21 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, Ellipsis, Lock, Pause, Play } from "lucide-react";
 import NavigationOverlay from "../components/NavigationOverlay";
-import { tracks } from "../data/tracks";
+import { tracks, versionersById } from "../data/tracks";
 import { navigate } from "../lib/navigation";
+import {
+  PLAYER_SYNTH_PROFILE,
+  buildPlayerPattern,
+  createAudioContext,
+  playSynthStep
+} from "../lib/synth";
 
 const TICK_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];
 const WAVE_DELAYS = ["0s", "0.1s", "0.2s", "0.3s", "0.4s", "0.5s"];
-const NOTE_SCALE = [220, 261.63, 293.66, 329.63, 392, 440, 493.88, 523.25];
 const PLAY_INTERVAL_MS = 280;
 
 const PLAYER_TRACK = tracks.find((track) => track.title === "Afterglow Lines") ?? tracks[0];
-const JP_AVATAR =
-  tracks.find((track) => track.creator === "JP")?.creatorAvatar ??
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=260&q=80";
-
-function buildPattern(trackId) {
-  const seed = trackId.split("").reduce((total, char) => total + char.charCodeAt(0), 0);
-
-  return Array.from({ length: 12 }, (_, index) => {
-    const step = (seed + index * 3 + (index % 2 === 0 ? 1 : 0)) % NOTE_SCALE.length;
-    return NOTE_SCALE[step];
-  });
-}
+const JP_AVATAR = versionersById.jp?.avatar ?? "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=260&q=80";
 
 function VersionsPlayerScreen() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +23,7 @@ function VersionsPlayerScreen() {
   const audioContextRef = useRef(null);
   const playbackIntervalRef = useRef(null);
   const stepRef = useRef(0);
-  const pattern = useMemo(() => buildPattern(PLAYER_TRACK.id), []);
+  const pattern = useMemo(() => buildPlayerPattern(PLAYER_TRACK.id), []);
 
   const stopPlayback = useCallback(() => {
     if (playbackIntervalRef.current) {
@@ -42,31 +36,7 @@ function VersionsPlayerScreen() {
   }, []);
 
   const playStep = useCallback((context, frequency) => {
-    const now = context.currentTime;
-
-    const lead = context.createOscillator();
-    const leadGain = context.createGain();
-    lead.type = "triangle";
-    lead.frequency.setValueAtTime(frequency, now);
-    leadGain.gain.setValueAtTime(0.0001, now);
-    leadGain.gain.exponentialRampToValueAtTime(0.11, now + 0.03);
-    leadGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.24);
-    lead.connect(leadGain);
-    leadGain.connect(context.destination);
-    lead.start(now);
-    lead.stop(now + 0.26);
-
-    const bass = context.createOscillator();
-    const bassGain = context.createGain();
-    bass.type = "sine";
-    bass.frequency.setValueAtTime(frequency / 2, now);
-    bassGain.gain.setValueAtTime(0.0001, now);
-    bassGain.gain.exponentialRampToValueAtTime(0.08, now + 0.04);
-    bassGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.3);
-    bass.connect(bassGain);
-    bassGain.connect(context.destination);
-    bass.start(now);
-    bass.stop(now + 0.32);
+    playSynthStep(context, frequency, PLAYER_SYNTH_PROFILE);
   }, []);
 
   const handlePlayToggle = useCallback(async () => {
@@ -75,12 +45,12 @@ function VersionsPlayerScreen() {
       return;
     }
 
-    if (!audioContextRef.current) {
-      const Context = window.AudioContext || window.webkitAudioContext;
-      audioContextRef.current = new Context();
+    let context = audioContextRef.current;
+    if (!context || context.state === "closed") {
+      context = createAudioContext();
+      audioContextRef.current = context;
     }
 
-    const context = audioContextRef.current;
     await context.resume();
 
     if (playbackIntervalRef.current) {
@@ -105,8 +75,10 @@ function VersionsPlayerScreen() {
         window.clearInterval(playbackIntervalRef.current);
       }
 
-      if (audioContextRef.current) {
-        audioContextRef.current.close();
+      const context = audioContextRef.current;
+      audioContextRef.current = null;
+      if (context) {
+        context.close();
       }
     };
   }, []);
