@@ -15,6 +15,8 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
   const suppressClickRef = useRef(false);
 
   const waveDelays = buildWaveDelays(WAVE_SAMPLE_COUNT);
+  const showCreatorInSubtitle =
+    track.artist.trim().toLowerCase() !== track.creator.trim().toLowerCase();
 
   const resetSwipeState = () => {
     pointerIdRef.current = null;
@@ -169,7 +171,7 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
         </div>
         <div className="mt-0.5">
           <p className="truncate text-xs text-base-content/70">
-            {track.artist} {"\u2022"} {track.creator}
+            {showCreatorInSubtitle ? `${track.artist} \u2022 ${track.creator}` : track.artist}
           </p>
         </div>
       </div>

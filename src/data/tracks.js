@@ -1,4 +1,62 @@
-export const versioners = [
+const artistCreators = [
+  {
+    id: "lena-vale",
+    avatar: "https://i.pravatar.cc/120?img=11",
+    name: "Lena Vale"
+  },
+  {
+    id: "midnight-harbor",
+    avatar: "https://i.pravatar.cc/120?img=12",
+    name: "Midnight Harbor"
+  },
+  {
+    id: "arlo-k",
+    avatar: "https://i.pravatar.cc/120?img=13",
+    name: "Arlo K"
+  },
+  {
+    id: "sia-nova",
+    avatar: "https://i.pravatar.cc/120?img=14",
+    name: "Sia Nova"
+  },
+  {
+    id: "cass-atlas",
+    avatar: "https://i.pravatar.cc/120?img=15",
+    name: "Cass Atlas"
+  },
+  {
+    id: "antonio-artist",
+    avatar: "https://i.pravatar.cc/120?img=16",
+    name: "Antonio"
+  },
+  {
+    id: "nora-isles",
+    avatar: "https://i.pravatar.cc/120?img=17",
+    name: "Nora Isles"
+  },
+  {
+    id: "orbit-84",
+    avatar: "https://i.pravatar.cc/120?img=18",
+    name: "Orbit 84"
+  },
+  {
+    id: "rhea-co",
+    avatar: "https://i.pravatar.cc/120?img=19",
+    name: "Rhea & Co."
+  },
+  {
+    id: "oriel-artist",
+    avatar: "https://i.pravatar.cc/120?img=20",
+    name: "Oriel"
+  },
+  {
+    id: "twelve-pines",
+    avatar: "https://i.pravatar.cc/120?img=21",
+    name: "Twelve Pines"
+  }
+];
+
+const mixVersioners = [
   {
     id: "jp",
     avatar:
@@ -73,6 +131,8 @@ export const versioners = [
   }
 ];
 
+export const versioners = [...artistCreators, ...mixVersioners];
+
 export const versionersById = Object.fromEntries(
   versioners.map((versioner) => [versioner.id, versioner])
 );
@@ -86,15 +146,15 @@ const trackDefinitions = [
     duration: "3:32",
     thumbnail:
       "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=240&q=80",
-    creatorId: "jp",
+    creatorId: "lena-vale",
     versions: [
+      {
+        creatorId: "lena-vale",
+        title: null
+      },
       {
         creatorId: "jp",
         title: "JP rerub"
-      },
-      {
-        creatorId: "alex-m",
-        title: null
       },
       {
         creatorId: "rico-t",
@@ -130,15 +190,15 @@ const trackDefinitions = [
     duration: "4:04",
     thumbnail:
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=240&q=80",
-    creatorId: "jp",
+    creatorId: "midnight-harbor",
     versions: [
+      {
+        creatorId: "midnight-harbor",
+        title: null
+      },
       {
         creatorId: "jp",
         title: "Analogz"
-      },
-      {
-        creatorId: "alex-m",
-        title: null
       }
     ]
   },
@@ -150,15 +210,15 @@ const trackDefinitions = [
     duration: "2:58",
     thumbnail:
       "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?auto=format&fit=crop&w=240&q=80",
-    creatorId: "jp",
+    creatorId: "arlo-k",
     versions: [
+      {
+        creatorId: "arlo-k",
+        title: null
+      },
       {
         creatorId: "jp",
         title: "Sweaty Box"
-      },
-      {
-        creatorId: "alex-m",
-        title: null
       },
       {
         creatorId: "rico-t",
@@ -182,10 +242,10 @@ const trackDefinitions = [
     duration: "3:47",
     thumbnail:
       "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=240&q=80",
-    creatorId: "jp",
+    creatorId: "sia-nova",
     versions: [
       {
-        creatorId: "jp",
+        creatorId: "sia-nova",
         title: null
       }
     ]
@@ -198,10 +258,10 @@ const trackDefinitions = [
     duration: "3:11",
     thumbnail:
       "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=240&q=80",
-    creatorId: "ivy-m",
+    creatorId: "cass-atlas",
     versions: [
       {
-        creatorId: "ivy-m",
+        creatorId: "cass-atlas",
         title: null
       },
       {
@@ -234,10 +294,10 @@ const trackDefinitions = [
     duration: "4:19",
     thumbnail:
       "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=240&q=80",
-    creatorId: "luca-p",
+    creatorId: "antonio-artist",
     versions: [
       {
-        creatorId: "luca-p",
+        creatorId: "antonio-artist",
         title: null
       },
       {
@@ -258,10 +318,10 @@ const trackDefinitions = [
     duration: "3:40",
     thumbnail:
       "https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?auto=format&fit=crop&w=240&q=80",
-    creatorId: "ari-c",
+    creatorId: "antonio-artist",
     versions: [
       {
-        creatorId: "ari-c",
+        creatorId: "antonio-artist",
         title: null
       },
       {
@@ -297,10 +357,10 @@ const trackDefinitions = [
     genre: "Indie",
     duration: "2:49",
     thumbnail: "https://picsum.photos/id/1039/240/240",
-    creatorId: "seth-v",
+    creatorId: "nora-isles",
     versions: [
       {
-        creatorId: "seth-v",
+        creatorId: "nora-isles",
         title: null
       },
       {
@@ -325,10 +385,10 @@ const trackDefinitions = [
     duration: "3:06",
     thumbnail:
       "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=240&q=80",
-    creatorId: "nia-k",
+    creatorId: "orbit-84",
     versions: [
       {
-        creatorId: "nia-k",
+        creatorId: "orbit-84",
         title: null
       },
       {
@@ -345,10 +405,10 @@ const trackDefinitions = [
     duration: "4:25",
     thumbnail:
       "https://images.unsplash.com/photo-1425342605259-25d80e320565?auto=format&fit=crop&w=240&q=80",
-    creatorId: "tom-g",
+    creatorId: "rhea-co",
     versions: [
       {
-        creatorId: "tom-g",
+        creatorId: "rhea-co",
         title: null
       },
       {
@@ -389,10 +449,10 @@ const trackDefinitions = [
     duration: "3:14",
     thumbnail:
       "https://images.unsplash.com/photo-1444824775686-4185f172c44b?auto=format&fit=crop&w=240&q=80",
-    creatorId: "yasmin-d",
+    creatorId: "oriel-artist",
     versions: [
       {
-        creatorId: "yasmin-d",
+        creatorId: "oriel-artist",
         title: null
       }
     ]
@@ -405,10 +465,10 @@ const trackDefinitions = [
     duration: "3:57",
     thumbnail:
       "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=240&q=80",
-    creatorId: "jules-b",
+    creatorId: "twelve-pines",
     versions: [
       {
-        creatorId: "jules-b",
+        creatorId: "twelve-pines",
         title: null
       },
       {
