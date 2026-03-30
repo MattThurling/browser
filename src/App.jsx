@@ -18,6 +18,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuTrack, setMenuTrack] = useState(null);
+  const [selectedTrackId, setSelectedTrackId] = useState(null);
   const [playingTrackId, setPlayingTrackId] = useState(null);
   const [playingVersionIndex, setPlayingVersionIndex] = useState(0);
   const audioContextRef = useRef(null);
@@ -79,12 +80,30 @@ function App() {
       });
     });
   }, [normalizedQuery, trackCatalog]);
-  const playingTrackVersioners = useMemo(() => {
-    if (!playingTrackId) {
+  const activeTrackId = playingTrackId ?? selectedTrackId;
+  const activeVersionerId = useMemo(() => {
+    if (!activeTrackId) {
       return null;
     }
 
-    const activeTrack = trackCatalog.find((track) => track.id === playingTrackId);
+    const activeTrack = trackCatalog.find((track) => track.id === activeTrackId);
+    if (!activeTrack || activeTrack.versions.length === 0) {
+      return null;
+    }
+
+    const activeVersionIndex = versionIndexes[activeTrackId] ?? 0;
+    const safeVersionIndex =
+      ((activeVersionIndex % activeTrack.versions.length) + activeTrack.versions.length) %
+      activeTrack.versions.length;
+
+    return activeTrack.versions[safeVersionIndex]?.creatorId ?? null;
+  }, [activeTrackId, trackCatalog, versionIndexes]);
+  const activeTrackVersioners = useMemo(() => {
+    if (!activeTrackId) {
+      return null;
+    }
+
+    const activeTrack = trackCatalog.find((track) => track.id === activeTrackId);
     if (!activeTrack) {
       return [];
     }
@@ -95,24 +114,8 @@ function App() {
     ]);
 
     return versioners.filter((versioner) => versionerIds.has(versioner.id));
-  }, [playingTrackId, trackCatalog]);
-  const visibleVersioners = playingTrackVersioners ?? filteredVersioners;
-  const handleVersionSwipe = useCallback(
-    (trackId, direction) => {
-      setVersionIndexes((previousState) => {
-        const versionCount = versionCountByTrack[trackId] ?? 1;
-        const currentIndex = previousState[trackId] ?? 0;
-        const delta = direction === "next" ? 1 : -1;
-        const nextIndex = (currentIndex + delta + versionCount) % versionCount;
-
-        return {
-          ...previousState,
-          [trackId]: nextIndex
-        };
-      });
-    },
-    [versionCountByTrack]
-  );
+  }, [activeTrackId, trackCatalog]);
+  const visibleVersioners = activeTrackVersioners ?? filteredVersioners;
   const handleTrackMenuOpen = useCallback((track) => {
     setIsMenuOpen(false);
     setMenuTrack(track);
@@ -147,6 +150,28 @@ function App() {
     stepRef.current = 0;
   }, [tearDownEffectChain]);
 
+  const handleVersionSwipe = useCallback(
+    (trackId, direction) => {
+      setSelectedTrackId(trackId);
+      if (playingTrackId && playingTrackId !== trackId) {
+        stopPlayback();
+      }
+
+      setVersionIndexes((previousState) => {
+        const versionCount = versionCountByTrack[trackId] ?? 1;
+        const currentIndex = previousState[trackId] ?? 0;
+        const delta = direction === "next" ? 1 : -1;
+        const nextIndex = (currentIndex + delta + versionCount) % versionCount;
+
+        return {
+          ...previousState,
+          [trackId]: nextIndex
+        };
+      });
+    },
+    [playingTrackId, stopPlayback, versionCountByTrack]
+  );
+
   const playStep = useCallback((context, frequency, profile) => {
     playSynthStep(context, frequency, profile, activeNodesRef.current?.inputGain);
   }, []);
@@ -154,6 +179,17 @@ function App() {
   const handleTrackSelect = useCallback(
     async (track) => {
       const selectedVersionIndex = track.versionIndex ?? 0;
+      const isTrackAlreadySelected = selectedTrackId === track.id;
+
+      if (!isTrackAlreadySelected) {
+        setSelectedTrackId(track.id);
+
+        if (playingTrackId && playingTrackId !== track.id) {
+          stopPlayback();
+        }
+
+        return;
+      }
 
       if (playingTrackId === track.id && playingVersionIndex === selectedVersionIndex) {
         stopPlayback();
@@ -179,6 +215,7 @@ function App() {
         VERSION_PITCH_OFFSETS[selectedVersionIndex % VERSION_PITCH_OFFSETS.length] ?? 1;
 
       stepRef.current = 0;
+      setSelectedTrackId(track.id);
       setPlayingTrackId(track.id);
       setPlayingVersionIndex(selectedVersionIndex);
       playStep(context, pattern[0] * versionPitchOffset, profile);
@@ -193,6 +230,7 @@ function App() {
     [
       buildEffectChain,
       playStep,
+      selectedTrackId,
       playingTrackId,
       playingVersionIndex,
       stopPlayback,
@@ -226,6 +264,17 @@ function App() {
   }, [filteredTracks, playingTrackId, stopPlayback]);
 
   useEffect(() => {
+    if (!selectedTrackId) {
+      return;
+    }
+
+    const isTrackVisible = filteredTracks.some((track) => track.id === selectedTrackId);
+    if (!isTrackVisible) {
+      setSelectedTrackId(null);
+    }
+  }, [filteredTracks, selectedTrackId]);
+
+  useEffect(() => {
     if (!playingTrackId) {
       return;
     }
@@ -246,6 +295,7 @@ function App() {
             setMenuTrack(null);
             setIsMenuOpen(true);
           }}
+          activeVersionerId={activeVersionerId}
           versioners={visibleVersioners}
         />
 
@@ -273,6 +323,7 @@ function App() {
                     return (
                       <TrackRow
                         track={displayTrack}
+                        isSelected={selectedTrackId === track.id}
                         isPlaying={playingTrackId === track.id}
                         profile={trackProfiles[track.id]}
                         onSelect={handleTrackSelect}

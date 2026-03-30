@@ -7,7 +7,7 @@ function buildWaveDelays(count) {
 const WAVE_SAMPLE_COUNT = 6;
 const SWIPE_TRIGGER_PX = 54;
 
-function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, profile }) {
+function TrackRow({ track, isSelected, isPlaying, onSelect, onVersionSwipe, onOpenMenu, profile }) {
   const pointerIdRef = useRef(null);
   const startPointRef = useRef({ x: 0, y: 0 });
   const deltaXRef = useRef(0);
@@ -17,6 +17,7 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
   const waveDelays = buildWaveDelays(WAVE_SAMPLE_COUNT);
   const showCreatorInSubtitle =
     track.artist.trim().toLowerCase() !== track.creator.trim().toLowerCase();
+  const showPlayOverlay = isSelected && !isPlaying;
 
   const resetSwipeState = () => {
     pointerIdRef.current = null;
@@ -107,7 +108,7 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
     <li
       role="button"
       tabIndex={0}
-      aria-pressed={isPlaying}
+      aria-pressed={isSelected || isPlaying}
       onClick={handleRowClick}
       onKeyDown={handleKeyDown}
       onPointerDown={handlePointerDown}
@@ -115,7 +116,7 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
       onPointerUp={handlePointerEnd}
       onPointerCancel={resetSwipeState}
       className={`group grid cursor-pointer grid-cols-[42px_52px_1fr_44px] items-center gap-3 rounded-2xl px-2 py-2 transition-colors ${
-        isPlaying ? "bg-base-200/90" : "hover:bg-base-200/80"
+        isSelected || isPlaying ? "bg-base-200/90" : "hover:bg-base-200/80"
       }`}
       style={{ touchAction: "pan-y" }}
     >
@@ -153,6 +154,19 @@ function TrackRow({ track, isPlaying, onSelect, onVersionSwipe, onOpenMenu, prof
                 }}
               />
             ))}
+          </div>
+        ) : null}
+        {showPlayOverlay ? (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/28">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black/60 text-white shadow-sm">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="ml-0.5 h-4 w-4 fill-current"
+              >
+                <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+              </svg>
+            </div>
           </div>
         ) : null}
       </div>
