@@ -176,6 +176,42 @@ function App() {
     playSynthStep(context, frequency, profile, activeNodesRef.current?.inputGain);
   }, []);
 
+  const startPlaybackForVersion = useCallback(
+    async (trackId, versionIndex) => {
+      let context = audioContextRef.current;
+      if (!context || context.state === "closed") {
+        context = createAudioContext();
+        audioContextRef.current = context;
+      }
+
+      await context.resume();
+
+      if (playbackIntervalRef.current) {
+        window.clearInterval(playbackIntervalRef.current);
+      }
+
+      const profile = trackProfiles[trackId] ?? PLAYBACK_PROFILES[0];
+      buildEffectChain(context, profile);
+      const pattern = buildPattern(trackId, profile.scale, versionIndex);
+      const versionPitchOffset =
+        VERSION_PITCH_OFFSETS[versionIndex % VERSION_PITCH_OFFSETS.length] ?? 1;
+
+      stepRef.current = 0;
+      setSelectedTrackId(trackId);
+      setPlayingTrackId(trackId);
+      setPlayingVersionIndex(versionIndex);
+      playStep(context, pattern[0] * versionPitchOffset, profile);
+      stepRef.current = 1;
+
+      playbackIntervalRef.current = window.setInterval(() => {
+        const nextFrequency = pattern[stepRef.current % pattern.length];
+        playStep(context, nextFrequency * versionPitchOffset, profile);
+        stepRef.current += 1;
+      }, profile.tempoMs);
+    },
+    [buildEffectChain, playStep, trackProfiles]
+  );
+
   const handleTrackSelect = useCallback(
     async (track) => {
       const selectedVersionIndex = track.versionIndex ?? 0;
@@ -196,46 +232,9 @@ function App() {
         return;
       }
 
-      let context = audioContextRef.current;
-      if (!context || context.state === "closed") {
-        context = createAudioContext();
-        audioContextRef.current = context;
-      }
-
-      await context.resume();
-
-      if (playbackIntervalRef.current) {
-        window.clearInterval(playbackIntervalRef.current);
-      }
-
-      const profile = trackProfiles[track.id] ?? PLAYBACK_PROFILES[0];
-      buildEffectChain(context, profile);
-      const pattern = buildPattern(track.id, profile.scale, selectedVersionIndex);
-      const versionPitchOffset =
-        VERSION_PITCH_OFFSETS[selectedVersionIndex % VERSION_PITCH_OFFSETS.length] ?? 1;
-
-      stepRef.current = 0;
-      setSelectedTrackId(track.id);
-      setPlayingTrackId(track.id);
-      setPlayingVersionIndex(selectedVersionIndex);
-      playStep(context, pattern[0] * versionPitchOffset, profile);
-      stepRef.current = 1;
-
-      playbackIntervalRef.current = window.setInterval(() => {
-        const nextFrequency = pattern[stepRef.current % pattern.length];
-        playStep(context, nextFrequency * versionPitchOffset, profile);
-        stepRef.current += 1;
-      }, profile.tempoMs);
+      await startPlaybackForVersion(track.id, selectedVersionIndex);
     },
-    [
-      buildEffectChain,
-      playStep,
-      selectedTrackId,
-      playingTrackId,
-      playingVersionIndex,
-      stopPlayback,
-      trackProfiles
-    ]
+    [playingTrackId, playingVersionIndex, selectedTrackId, startPlaybackForVersion, stopPlayback]
   );
 
   useEffect(() => {
@@ -281,9 +280,9 @@ function App() {
 
     const activeVersionForPlayingTrack = versionIndexes[playingTrackId] ?? 0;
     if (activeVersionForPlayingTrack !== playingVersionIndex) {
-      stopPlayback();
+      startPlaybackForVersion(playingTrackId, activeVersionForPlayingTrack);
     }
-  }, [playingTrackId, playingVersionIndex, stopPlayback, versionIndexes]);
+  }, [playingTrackId, playingVersionIndex, startPlaybackForVersion, versionIndexes]);
 
   return (
     <main className="mx-auto flex h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-base-100 text-[#1d1f24]">
