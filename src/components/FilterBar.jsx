@@ -22,13 +22,13 @@ function FilterBar({ query, onQueryChange, onMenuClick, versioners, activeVersio
         </button>
       </div>
 
-      <label className="input input-bordered flex h-11 items-center gap-2 rounded-xl px-3 text-base">
-        <Search className="h-4 w-4 text-base-content/50" aria-hidden="true" />
+      <label className="flex h-12 items-center gap-2 rounded-full border border-base-300 bg-base-100 px-4 text-base">
+        <Search className="h-4 w-4 shrink-0 text-base-content/45" aria-hidden="true" />
         <input
+          aria-label="Search tracks, artists, or creators"
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
-          placeholder="Search tracks, artists, or creators"
-          className="grow text-[16px]"
+          className="grow bg-transparent text-[16px] outline-none"
         />
       </label>
 
@@ -37,13 +37,13 @@ function FilterBar({ query, onQueryChange, onMenuClick, versioners, activeVersio
           {versioners.map((versioner) => (
             <li key={versioner.id} title={versioner.name}>
               <div
-                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-all ${
+                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-all ${
                   versioner.id === activeVersionerId
                     ? "shadow-[0_0_0_2px_rgba(88,214,205,0.85),0_0_0_6px_rgba(88,214,205,0.18)]"
                     : ""
                 }`}
               >
-                <div className="h-11 w-11 overflow-hidden rounded-full">
+                <div className="h-12 w-12 overflow-hidden rounded-full">
                   <img
                     src={versioner.avatar}
                     alt={versioner.name}
